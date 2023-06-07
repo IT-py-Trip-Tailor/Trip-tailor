@@ -6,24 +6,24 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SignUp</title>
-  <link rel="stylesheet" href="style_sign.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style_sign.css') }}">
 </head>
 
 <body>
   <main>
     <div class="form">
       <h2>Регистрация</h2>
-      <form action="/register">
+      <form action="/register" method="post">
         <div class="field">
-          <input type="text" placeholder="Логин" required>
-          <input type="email" placeholder="Почта" required>
-          <input type="text" placeholder="Пароль" required>
+          <input type="text" placeholder="Логин" name="login" required>
+          <input type="email" placeholder="Почта" name="email" required>
+          <input type="password" placeholder="Пароль" name="password" required>
         </div>
         <div class="field-btn">
-          <button>Зарегистрироваться</button>
+          <button type="submit">Зарегистрироваться</button>
         </div>
         <div class="sign__in">
-          <span>Есть аккаунт? <a href="#">Войти</a></span>
+          <span>Есть аккаунт? <a href="/login">Войти</a></span>
         </div>
       </form>
     </div>

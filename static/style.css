@@ -237,3 +237,7 @@ transition: transform 0.2s;
 button:hover {
 transform: translateY(-5px);
 }
+
+a {
+  all: unset;
+}

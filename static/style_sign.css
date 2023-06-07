@@ -92,6 +92,7 @@ input::placeholder {
   display: flex;
   /* align-items: center; */
   justify-content: center;
+  padding-bottom: 1em;
 }
 
 .sign__in span {
@@ -176,3 +177,15 @@ input:not(:placeholder-shown)::placeholder {
     left: 1.2em;
     font-size: .60em;
 }
+
+.error {
+  border: 0.5px solid rgba(255, 56, 56, 0.3);
+  color: rgb(228, 66, 66);
+  border-width: 0.3px;
+  border-radius: 15px;
+  font-size: 1.2em;
+  padding: 1em;
+  text-align: center;
+  /* padding-top: 1em; */
+}
+
