@@ -78,8 +78,11 @@ def login():
     return render_template('login.html')
 
 
-@app.route('/profile')
+@app.route('/profile', methods=['GET', 'POST'])
 def profile():
+    if request.method == 'POST':
+        pass
+
     # Проверка наличия куки с именем пользователя
     cookie = request.cookies.get('unique_key')
     if cookie:

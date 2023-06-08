@@ -1,12 +1,157 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Профиль</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Personal Area</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style_profile.css') }}">
 </head>
+
 <body>
-    {{ user }}
+  <header>
+    <div class="l-header">
+      <div class="right--ponel">
+        <a href="https://russpass.ru">
+          <img src="{{ url_for('static', filename='/assets/sign.svg') }}" alt="sign">
+        </a>
+      </div>
+    </div>
+  </header>
+  <main>
+    <div class="l-main">
+      <a href="#">
+        <div class="arrow">
+          
+        </div>
+      </a>
+
+      <h2>Личный кабинет</h2>
+      <div class="fullname-info">
+        <div class="profile">
+          <img src="{{ url_for('static', filename='/assets/profile.png') }}" alt="profile">
+        </div>
+        <div class="info">
+          <h5 class="name">Вася Пупкин</h5>
+          <p class="city">г. Санкт-Петербург</p>
+        </div>
+      </div>
+      <section class="field">
+        <form action="/profile", method="post">
+          <div class="fullname--field input--field">
+
+            <label for="name">
+              <fieldset>
+                <legend>
+                  Имя*
+                </legend>
+                <input id="name" type="text" required>
+              </fieldset>
+            </label>
+
+            <label for="surname">
+
+              <fieldset>
+                <legend>
+                  Фамилия*
+                </legend>
+                <input id="surname" type="text" required>
+              </fieldset>
+            </label>
+            <label for="surname2">
+
+              <fieldset>
+                <legend>
+                  Отчество*
+                </legend>
+                <input id="surname2" type="text" required>
+              </fieldset>
+            </label>
+          </div>
+          <div class="data--field input--field">
+            <label for="floor">
+              <fieldset>
+                <legend>
+                  Пол*
+                </legend>
+                <select id="floor">
+                  <option hidden>Выберите</option>
+                  <option value="men">Мужчина</option>
+                  <option value="women">Женщина</option>
+                </select>
+              </fieldset>
+            </label>
+
+            <label for="birthday">
+              <fieldset>
+                <legend>
+                  Дата рождения*
+                </legend>
+                <input type="text" id="birthday" placeholder="ДД.ММ.ГГГГ" required>
+              </fieldset>
+            </label>
+
+
+            <label for="number-phone">
+              <fieldset>
+                <legend>
+                  Номер телефона*
+                </legend>
+                <input id="number-phone" type="tel" required>
+              </fieldset>
+            </label>
+
+          </div>
+          <div class="family--field input--field">
+            <label for="family">
+              <fieldset>
+                <legend>
+                  Семейное полжение*
+                </legend>
+                <select id="family">
+                  <option hidden>Выберите</option>
+                  <option value="single">Холост</option>
+                  <option value="married">Женат/Замужем</option>
+                </select>
+              </fieldset>
+            </label>
+
+            <label for="child">
+              <fieldset>
+                <legend>
+                  Дети*
+                </legend>
+                <select id="child">
+                  <option hidden>Выберите</option>
+                  <option value="no_child">Нет</option>
+                  <option value="one">1 ребенок</option>
+                  <option value="two">2 ребенка</option>
+                  <option value="three">3 ребенка</option>
+                  <option value="more">больше 4-х детей</option>
+                </select>
+              </fieldset>
+            </label>
+
+            <label class="plug">
+              <fieldset>
+                <legend>
+                  Дети*
+                </legend>
+                <select>
+                  <option hidden>Выберите</option>
+                </select>
+              </fieldset>
+            </label>
+          </div>
+          <div class="field--btn">
+            <button type="submit">Сохранить</button>
+          </div>
+        </form>
+        
+      </section>
+    </div>
+  </main>
 </body>
+
 </html>
