@@ -351,3 +351,15 @@ main {
     margin: 25px 0;
   }
 }
+
+.slider-img {
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    position: absolute;
+    width: 100%;
+}
+
+.slider-img.active {
+    opacity: 1;
+}
+
