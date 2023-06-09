@@ -1,0 +1,353 @@
+@import url("https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #FFFBF3;
+}
+
+h2 {
+  font-family: 'Montserrat', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 59px;
+  /* identical to box height */
+
+
+  color: #000000;
+}
+
+h3 {
+  font-family: 'Montserrat', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 36px;
+  line-height: 20px;
+  /* identical to box height, or 56% */
+
+  letter-spacing: 0.25px;
+
+  color: #000000;
+}
+
+h5 {
+  font-family: 'Montserrat', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 20px;
+  /* identical to box height, or 83% */
+
+  letter-spacing: 0.25px;
+
+  color: #000000;
+
+}
+
+p {
+  font-family: 'Montserrat', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  /* line-height: 20px; */
+  /* identical to box height, or 83% */
+
+  letter-spacing: 0.25px;
+
+  color: #000000;
+}
+
+button {
+  cursor: pointer;
+}
+
+header {
+  width: 100%;
+  height: 60px;
+  /* position: fixed; */
+}
+
+header .l-header {
+  max-width: 1900px;
+  height: 100%;
+  padding: 0 5px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.l-header .right__ponel {
+  width: 130px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.right__ponel button {
+  padding: 9px 22px 9px 11px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #FFFBF3;
+  border-radius: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+/* main */
+
+
+main {
+  width: 100%;
+}
+
+.l-main {
+  max-width: 1900px;
+  margin: 0 auto;
+  padding: 44px 5px 0;
+}
+
+.l-main h2 {}
+
+.tour {
+  display: flex;
+  justify-content: space-around;
+}
+
+.tour .tour--info {}
+
+.tour .tour--info .tour--description {}
+
+.tour .tour--info .tour--description h3 {
+  margin: 40px 0;
+}
+
+.tour .tour--info .tour--description p {
+  margin: 40px 0;
+  max-width: 848px;
+}
+
+.tour .tour--info .tour--programm {}
+
+.tour .tour--info .tour--programm h3 {}
+
+.tour .tour--info .tour--programm ul {}
+
+.tour .tour--info .tour--programm ul li {
+  margin: 40px 0;
+  list-style-type: none;
+}
+
+.tour .tour--info .tour--programm ul li h5 {}
+
+.tour .tour--info .tour--programm ul li p {
+  margin-top: 15px;
+}
+
+.tour .tour--info .tour--grade {}
+
+.tour .tour--info .tour--grade span {
+  padding: 12px 25px;
+  font-family: 'Montserrat', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+  /* identical to box height */
+
+  border-radius: 30px;
+  border: 1.5px solid #FF7043;
+  color: #FF7043;
+}
+
+/* bg */
+.tour--description_bg {
+  display: flex;
+  align-items: flex-end;
+}
+
+.tour--description_bg--container {
+  position: relative;
+}
+
+/* arrows */
+.tour--description_bg--container .arrows {
+  position: absolute;
+  left: 0;
+  top: calc(50% - 42px);
+  width: 100%;
+  height: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.tour--description_bg--container .arrows .prev,
+.tour--description_bg--container .arrows .next {
+  width: 29px;
+  height: 54px;
+  position: relative;
+  cursor: pointer;
+
+}
+
+.tour--description_bg--container .arrows .prev::before,
+.tour--description_bg--container .arrows .prev::after,
+.tour--description_bg--container .arrows .next::before,
+.tour--description_bg--container .arrows .next::after {
+  content: "";
+  width: 30px;
+  height: 4px;
+  display: block;
+  position: absolute;
+  background-color: #FFFBF3;
+  border-radius: 5px;
+}
+
+.tour--description_bg--container .arrows .prev::before {
+  top: 15.5px;
+  left: 19px;
+  transform: rotate(-45deg);
+}
+
+.tour--description_bg--container .arrows .prev::after {
+  bottom: 15.5px;
+  left: 19px;
+  transform: rotate(45deg);
+}
+
+.tour--description_bg--container .arrows .next::before {
+  bottom: 15.5px;
+  right: 19px;
+  transform: rotate(-45deg);
+}
+
+.tour--description_bg--container .arrows .next::after {
+  top: 15.5px;
+  right: 19px;
+  transform: rotate(45deg);
+}
+
+.tour--description_bg-btn {
+  padding-top: 25px;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.tour--description_bg-btn button {
+  padding: 10px 64px;
+  font-family: 'Montserrat', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 29px;
+
+  border: none;
+  border-radius: 30px;
+  background: #FFCF08;
+  color: #000000;
+}
+
+/* more */
+
+.more {
+  display: flex;
+  justify-content: space-around;
+  padding: 50px 0;
+}
+
+.more .more--info {
+  width: 848px;
+}
+
+.more .more--info h2 {
+  margin-bottom: 40px;
+}
+
+.more .more--info .more--price ul,
+.more .more--info .more--additional ul {
+  margin: 40px 0;
+  padding: 0 30px;
+}
+
+.more .more--info .more--price ul li,
+.more .more--info .more--additional ul li {
+  font-family: 'Montserrat', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 30px;
+  /* or 125% */
+
+  letter-spacing: 0.25px;
+
+  color: #000000;
+}
+
+.more--plug {
+  opacity: 0;
+  pointer-events: none;
+}
+
+
+@media screen and (max-width: 1380px) {
+
+  .tour,
+  .more {
+    justify-content: space-between;
+  }
+
+  h2 {
+    font-size: 44px;
+  }
+
+  h3 {
+    font-size: 32px;
+  }
+
+  .tour .tour--info .tour--description h3 {
+    margin: 25px 0;
+  }
+
+  .tour .tour--info .tour--programm ul li {
+    margin: 25px 0;
+  }
+
+  h5 {}
+
+  .tour .tour--info .tour--description p {
+    max-width: 555px;
+    margin: 25px 0;
+  }
+
+  p {
+    font-size: 22px;
+  }
+
+  .tour--description_bg {
+    display: flex;
+    align-items: center;
+  }
+
+  .tour--description_bg--container {}
+
+  .tour--description_bg--container img {
+    width: 568px;
+  }
+
+  .more .more--info h2 {
+    margin-bottom: 25px;
+  }
+
+  .more .more--info .more--price ul,
+  .more .more--info .more--additional ul {
+    margin: 25px 0;
+  }
+}

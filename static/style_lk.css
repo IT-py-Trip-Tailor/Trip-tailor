@@ -1,0 +1,313 @@
+/* form */
+@import url("https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #FFFBF3;
+}
+
+header {
+  width: 100%;
+  position: fixed;
+
+}
+
+option:hover {
+  background-color: #FFFBF3;
+}
+
+header .l-header {
+  max-width: 1900px;
+  margin: 0 auto;
+  padding: 15px 15px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+header .l-header .right--ponel {}
+
+main {
+  width: 100%;
+}
+
+.l-main {
+  max-width: 1900px;
+  height: 100vh;
+  margin: 0 auto;
+  padding: 204px 5px 0;
+  position: relative;
+}
+
+.arrow {
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  top: 212px;
+  left: -71px;
+}
+
+.arrow:before {
+  content: "";
+  width: 30px;
+  height: 2px;
+  display: block;
+  position: absolute;
+  top: 9px;
+  left: 0;
+  background-color: #000000;
+  transform: rotate(-45deg);
+  border-radius: 3px;
+}
+
+.arrow:after {
+  content: "";
+  width: 30px;
+  height: 2px;
+  display: block;
+  position: absolute;
+  bottom: 9px;
+  left: 0;
+  background-color: #000000;
+  transform: rotate(45deg);
+  border-radius: 3px;
+}
+
+.l-main h2 {
+  padding-bottom: 30px;
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 59px;
+  /* identical to box height */
+
+
+  color: #000000;
+}
+
+.l-main .fullname-info {
+  max-width: 410px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.l-main .fullname-info .profile {}
+
+.l-main .fullname-info .info {
+  height: 92px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.l-main .fullname-info .info .name {
+  font-family: 'Montserrat', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 36px;
+  line-height: 44px;
+  /* identical to box height */
+
+
+  color: #000000;
+}
+
+.l-main .fullname-info .info .city {
+  font-family: 'Karla', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 37px;
+
+  color: #B6B6B6;
+}
+
+section.field {
+  width: 100%;
+  height: 50%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+}
+
+section.field form {
+  max-width: 1150px;
+
+}
+
+section.field form .input--field {
+  margin-top: 46px;
+  display: flex;
+  justify-content: space-between;
+
+}
+
+
+section.field form .input--field label fieldset {
+  width: 307px;
+  /* height: 55px; */
+  background: #FFFBF3;
+  border: 0.5px solid rgba(0, 0, 0, 0.486);
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+
+}
+
+section.field form .input--field label fieldset legend {
+  margin-left: 20px;
+  font-family: 'Karla', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 23px;
+
+  color: #000000;
+
+  /* background-color: none; */
+}
+
+section.field form .input--field label fieldset input[type="text"],
+section.field form .input--field label fieldset input[type="tel"] {
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  padding: 5px 8px 10px;
+  background: #FFFBF3;
+  border: none;
+  outline: none;
+  font-family: 'Karla', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 28px;
+  /* identical to box height */
+
+}
+
+section.field form .input--field label fieldset input[type="tel"]::placeholder {
+  color: #B6B6B6;
+}
+
+section.field form .input--field label fieldset select {
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  padding: 5px 8px 10px;
+  /* appearance: auto; */
+  border: none;
+  outline: none;
+  background: #FFFBF3;
+  font-family: 'Karla', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 28px;
+  color: #777777;
+  cursor: pointer;
+}
+
+
+
+section.field form .input--field label fieldset select option {
+  color: #333;
+  padding: 5px;
+  border-radius: 5px 5px 5px 5px;
+
+}
+
+section.field form .input--field label fieldset select::-webkit-scrollbar {
+  width: 0;
+}
+
+section.field form .input--field label fieldset select option:hover {
+  background-color: #ffdd9a;
+}
+
+.field--btn {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+
+.field--btn {
+  padding: 0 100px;
+}
+
+.field--btn button {
+  padding: 10px 52px;
+  font-family: 'Montserrat', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 29px;
+  border: none;
+  outline: none;
+  color: #000000;
+  background: #FFCF08;
+  border-radius: 30px;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 2048px) {
+  .arrow {
+    top: 16px;
+    left: 5px;
+
+  }
+}
+
+@media screen and (max-width: 1400px) {
+  .l-main {
+    padding: 80px 5px 0;
+  }
+
+  .l-main h2 {
+    font-size: 38px;
+  }
+
+  .l-main .fullname-info {
+    max-width: 288px;
+  }
+
+  .l-main .fullname-info .profile img {
+    width: 65px;
+  }
+
+  .l-main .fullname-info .info {
+    height: 82px;
+  }
+
+  .l-main .fullname-info .info .name {
+    font-size: 28px;
+  }
+
+  .l-main .fullname-info .info .city {
+    font-size: 22px;
+  }
+
+  section.field {
+    height: 70%;
+  }
+
+  section.field form {
+    max-width: 886px;
+  }
+
+  section.field form .input--field {
+    margin-top: 30px;
+  }
+
+  section.field form .input--field label fieldset {
+    width: 262px;
+  }
+}
