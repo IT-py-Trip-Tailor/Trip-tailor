@@ -1,0 +1,257 @@
+@import url("https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #FAEFDB;
+}
+
+header {
+  width: 100%;
+  height: 60px;
+  /* position: fixed; */
+}
+
+header .l-header {
+  max-width: 1900px;
+  height: 100%;
+  padding: 0 5px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.l-header .right__ponel {
+  width: 130px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.right__ponel button {
+  padding: 9px 22px 9px 11px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #faefdb;
+  border-radius: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+/* .right__ponel .sign-in span {
+  padding-right: 10px;
+  font-family: "Karla";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22px;
+
+  color: #000000;
+} */
+
+/* main */
+main {
+  width: 100%;
+}
+
+.l-main {
+  max-width: 1900px;
+  margin: 0 auto;
+  padding: 50px 0;
+  position: relative;
+}
+
+.l-main__container {
+  max-width: 1280px;
+  margin: 0 auto;
+
+}
+
+/* .l-main .prev {
+  width: 20px;
+  height: 40px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.l-main .prev::before {
+  content: '';
+  width: 2px;
+  height: 20px;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #000;
+}
+
+.l-main .prev::after {
+  content: '';
+  width: 2px;
+  height: 20px;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #000;
+} */
+
+.l-main h2 {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 34px;
+  /* identical to box height, or 71% */
+
+
+  /* 🌝/Text/Primary */
+
+  color: #1D1D1D;
+}
+
+.cards {
+  /* max-width: 1280px; */
+  margin: 0 auto;
+  padding: 62px 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.cards .card {
+  width: 392px;
+  height: 497px;
+  padding: 30px 24px 24px;
+  margin-bottom: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  border: 2px solid rgba(245, 223, 184, 0.5);
+  border-radius: 20px;
+  background: #FFFBF3;
+}
+
+.photo__card {
+  position: absolute;
+  top: -6px;
+  right: 24px;
+
+  padding: 12px 12px 30px;
+  background: #FFFFFF;
+  box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.03);
+  transform: rotate(2deg);
+}
+
+.photo__card .papperclip {
+  position: absolute;
+  top: -6px;
+  right: 30px;
+  transform: rotate(1deg);
+}
+
+.cards .card .title {}
+
+.cards .card .title h4 {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 28px;
+
+
+  letter-spacing: -0.35px;
+
+
+  color: #1D1D1D;
+}
+
+.cards .card .title p.subtitle {
+  font-family: 'Karla';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 22px;
+
+  color: rgba(29, 29, 29, 0.5);
+}
+
+.cards .card .attractions {}
+
+.cards .card .attractions ul {}
+
+.cards .card .attractions ul li {
+  height: 60px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+}
+
+.cards .card .attractions ul li .attractions__info {}
+
+.cards .card .attractions ul li .attractions__info h5 {
+  max-width: 215px;
+  font-family: 'Montserrat', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 22px;
+  /* identical to box height, or 138% */
+
+  display: flex;
+  align-items: center;
+
+  /* 🌝/Text/Primary */
+
+  color: #1D1D1D;
+}
+
+.cards .card .attractions ul li .attractions__info p {
+
+  font-family: 'Karla', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22px;
+  /* identical to box height, or 138% */
+
+  display: flex;
+  align-items: center;
+
+  /* 🌝/Text/Secondary */
+
+  color: rgba(29, 29, 29, 0.5);
+}
+
+.card .attractions-btn {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.card .attractions-btn button {
+  width: 100%;
+  padding: 13px 0;
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 22px;
+
+  background: #FAEFDB;
+  border: none;
+  border-radius: 12px;
+  color: #1D1D1D;
+
+  cursor: pointer;
+}

@@ -1,0 +1,159 @@
+@import url("https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #FFFBF3;
+}
+a{
+  text-decoration: none;
+}
+main {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-contaier {
+  padding: 25px 45px;
+  width: 706px;
+  background: #FFFFFF;
+  box-shadow: 0px 12px 16px rgba(0, 0, 0, 0.1);
+  border-radius: 30px;
+}
+
+.card-contaier .skip {
+  text-align: end;
+}
+
+.card-contaier .skip a {
+  font-family: 'Karla';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 24px;
+  /* or 120% */
+
+  letter-spacing: 0.15px;
+  text-decoration-line: underline;
+
+
+  color: #B6B6B6;
+
+}
+
+.card-contaier .title {
+  padding: 42px 0 25px;
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 32px;
+  line-height: 39px;
+  /* identical to box height */
+
+  text-align: center;
+  color: #000000;
+}
+
+.card-contaier .subtitle {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+
+  text-align: center;
+  color: #000000;
+}
+
+.cards {
+  max-width: 488px;
+  padding: 25px 0;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.cards .card {
+  width: 208px;
+  height: 201px;
+  padding-top: 30px;
+  margin-bottom: 35px;
+  background: #F5F5F8;
+  border-radius: 30px;
+}
+
+.cards figure {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cards figure img {}
+
+.cards figure figcaption {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+  text-transform: uppercase;
+  color: #979797;
+
+  text-align: center;
+}
+
+@media screen and (max-width:1980px){
+  .card-contaier {
+    width: 475px;
+    padding: 10px 12px;
+  }
+  .card-contaier .skip a{
+    font-size: 16px;
+  }
+  .card-contaier .title{
+    padding: 10px 0;
+    font-size: 24px;
+  }
+  .card-contaier .subtitle {
+    font-size: 16px;
+  }
+  .cards{
+    padding-top: 10px;
+    max-width: 336px;
+  } 
+  .cards .card {
+    width: 146px;
+    height: 146px;
+    padding-top: 0;
+    margin-bottom: 12px;
+  }
+  .cards figure{
+    justify-content: space-around;
+  }
+  .cards figure .art_img{
+    width: 95px;
+  }
+  .cards figure img{
+    width: 100px;
+  }
+  .cards figure .it_img{
+    width: 150px;
+  }
+  .cards figure .movie_img{
+    width: 140px;
+  }
+  .cards figure figcaption{
+    font-size: 14px;
+  }
+}

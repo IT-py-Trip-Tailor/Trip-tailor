@@ -5,27 +5,27 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Main</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <link rel="stylesheet" href="static/style.css">
 </head>
 <body>
   <header>
     <div class="l-header">
       <div class="logo">
         <a href="https://russpass.ru">
-          <img src="{{ url_for('static', filename='assets/logo.svg') }}" alt="logo">
+          <img src="static/assets/logo.svg" alt="logo">
         </a>
       </div>
       <div class="right__ponel">
         <a href="/login">
         <button class="sign-in">
           <span>Войти</span> 
-          <img src="{{ url_for('static', filename='assets/sign_icon.svg') }}" alt="sign">
+          <img src="static/assets/sign_icon.svg" alt="sign">
         </a>
           
         </button>
         <div class="profile">
           <a href="/profile">
-            <img src="{{ url_for('static', filename='assets/profile.png') }}" alt="profile">
+            <img src="static/assets/profile.png" alt="profile">
           </a>
         </div>
       </div>
