@@ -3,6 +3,9 @@ from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash, check_password_hash
 import secrets
 import sys
+from sklearn.preprocessing import MinMaxScaler, LabelEncoder
+from sklearn.neighbors import NearestNeighbors
+import pandas as pd
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.db'
@@ -168,8 +171,12 @@ tour_data_encoded['Питание'] = le.fit_transform(tour_data['Питание
 tour_data_encoded['Активности'] = le.fit_transform(tour_data['Активности'])
 tour_data_encoded['Язык гида'] = le.fit_transform(tour_data['Язык гида'])
 
+# Обучение модели KNN
+X = tour_data_encoded[['Откуда', 'Куда', 'Бюджет', 'Тип тура', 'Цель тура', 'Трансфер', 'Тип размещения', 'Питание', 'Активности', 'Язык гида']].values
+knn = NearestNeighbors(n_neighbors=5, algorithm='auto', metric='euclidean').fit(X)
+
 scaler = MinMaxScaler()
-scaled_data = scaler.fit_transform(data)
+scaled_data = scaler.fit_transform(tour_data)
 
 # KNN алгоритм
 knn = NearestNeighbors(n_neighbors=5, metric='euclidean')
