@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tout Package</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style_tour_package.css') }}">
+</head>
+
+<body>
+  <header>
+    <div class="l-header">
+      <div class="logo">
+        <a href="#">
+          <img src="{{ url_for('static', filename='assets/logo.svg') }}" alt="logo">
+        </a>
+      </div>
+      <div class="right__ponel">
+        <button class="sign-in">
+          <img src="{{ url_for('static', filename='assets/sign.svg') }}" alt="sign">
+        </button>
+        <div class="profile">
+          <a href="#">
+            <img src="{{ url_for('static', filename='assets/profile.png') }}" alt="profile">
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+  <main>
+    <div class="l-main">
+      <div class="main-container">
+        <h2>Составление тур-пакета</h2>
+
+
+      <div class="tour_package">
+        <div class="tour_package--date-city">
+          <form action="/tour_package", method="post">
+            <label for="from">
+              <span>От куда</span>
+              <input id="from" type="text" value="Москва" name="from">
+            </label>
+            <div class="liener"></div>
+            <label for="where">
+              <span>Куда</span>
+              <input id="where" type="text" value="Санкт-Петербург"  name="where">
+            </label>
+            <div class="liener"></div>
+            <label>
+              <span>Даты</span>
+              <div class="date--value">
+                <input id="date" type="date" value="2017-06-01"  name="date1">
+                -
+                <input id="date" type="date" value="2017-06-01" name="date2">
+              </div>
+
+            </label>
+          </form>
+        </div>
+        <div class="tour_package--info">
+          <form >
+            <label for="budget">
+              <h3>Бюджет</h3>
+              <div class="budget--container">
+                <input type="number" id="budget" placeholder="От" name="cost1">
+                <input type="number" id="budget" placeholder="До" name="cost2">
+              </div>
+            </label>
+
+            <label for="route">
+             <h3>Маршрут</h3>
+              <select onfocus='this.size=2;' onblur='this.size=0;' onchange='this.size=1;this.blur();' id="route" name="route">
+                <option hidden>Выберите</option>
+                <option value="one">В одном городе</option>
+                <option value="several">В нескольких городах</option>
+              </select>
+            </label>
+            <label for="target">
+              <h3>Цель тура</h3>
+               <select onfocus='this.size=3;' onblur='this.size=0;' onchange='this.size=1;this.blur();' id="target" name="target">
+                <option hidden>Выберите</option> 
+                <option value="one">С семьей</option>
+                 <option value="several">В одиночку</option>
+                 <option value="several">С друзьями</option>
+               </select>
+             </label>
+             <label for="type_tour">
+              <h3>Тип тура</h3>
+              <select onfocus='this.size=8;' onblur='this.size=0;' onchange='this.size=1;this.blur();' id="type_tour" name="type_tour">
+                <option hidden>Выберите</option>
+                <option value="beach">Пляжные</option>
+                <option value="excursion">Экскурсионные</option>
+                <option value="wellness ">Оздоровительные</option>
+                <option value="cognitive">Познавательные</option>
+                <option value="business">Деловые</option>
+                <option value="sports">Спортивные</option>
+                <option value="religious">Религиозные</option>
+                <option value="Individual">Индивидуальные</option>
+              </select>
+            </label>
+             <label for="target">
+              <h3>Трансфер</h3>
+               <select onfocus='this.size=3;' onblur='this.size=0;' onchange='this.size=1;this.blur();' id="target" name="transfer1">
+                <option hidden>Выберите</option> 
+                <option value="one">Самолет</option>
+                 <option value="several">Автобус</option>
+                 <option value="several">Поезд</option>
+               </select>
+             </label>
+             <label for="target">
+              <h3>Трансфер</h3>
+               <select onfocus='this.size=3;' onblur='this.size=0;' onchange='this.size=1;this.blur();' id="target" name="transfer2">
+                <option hidden>Выберите</option> 
+                <option value="one">Самолет</option>
+                 <option value="several">Автобус</option>
+                 <option value="several">Поезд</option>
+               </select>
+             </label>
+        </div>
+        <div class="tour_package--btn">
+          <button type="submit">Найти</button>
+        </div>
+      </form>
+      </div>
+    </div>
+    </div>
+  </main>
+</body>
+
+</html>

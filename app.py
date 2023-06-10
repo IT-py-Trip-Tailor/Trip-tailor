@@ -41,6 +41,10 @@ def index():
     cookie = request.cookies.get('unique_key')
     if cookie:
         user = User.query.filter_by(unique_key=cookie).first()
+        try:
+            user.email
+        except:
+            return render_template('index.html')
         return render_template('profile.html', user=user)
     return render_template('index.html')
 
@@ -147,6 +151,23 @@ def info():
 @app.route('/tour_info')
 def tour_info():
     return render_template('tour_info.html')
+
+@app.route('/tour_package', methods=['GET', 'POST'])
+def tour_package():
+    if request.method == 'POST':
+        from_ = request.form.get('from')
+        where = request.form.get('where')
+        date1 = request.form.get('date1')
+        date2 = request.form.get('date2')
+        cost1 = request.form.get('cost1')
+        cost2 = request.form.get('cost2')
+        route = request.form.get('route')
+        target = request.form.get('target')
+        type_tour = request.form.get('type_tour')
+        transfer1 = request.form.get('transfer1')
+        transfer2 = request.form.get('transfer2')
+
+    return render_template('tour_package.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
