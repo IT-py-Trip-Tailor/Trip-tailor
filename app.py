@@ -35,12 +35,12 @@ class User(db.Model):
 with app.app_context():
     db.create_all()
 
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 def index():
     # Проверка наличия куки с именем пользователя
-    username = request.cookies.get('username')
-    if username:
-        user = User.query.filter_by(username=username).first()
+    cookie = request.cookies.get('unique_key')
+    if cookie:
+        user = User.query.filter_by(unique_key=cookie).first()
         return render_template('profile.html', user=user)
     return render_template('index.html')
 
@@ -56,15 +56,16 @@ def register():
         hashed_password = generate_password_hash(password)
         # Создание нового пользователя
         try:
-            User.query.filter((User.email == email)).first()
+            user = User.query.filter((User.email == email)).first()
+            user.email
             error_message = 'Такая почта уже используется, воспользуйтесь входом'
-            return render_template('login.html', error_message=error_message)
+            return redirect(url_for('login.html', error_message=error_message))
         except:
             new_user = User(username=username, email=email, password=hashed_password, unique_key=unique_key)
             db.session.add(new_user)
             db.session.commit()
             # Перенаправление на страницу входа
-            resp = make_response(redirect(url_for('index')))
+            resp = make_response(redirect(url_for('profile')))
             resp.set_cookie('unique_key', unique_key)
             return resp    
 
@@ -98,20 +99,54 @@ def profile():
     cookie = request.cookies.get('unique_key')
 
     if request.method == 'POST':
-        user = User.query.filter(User.unique_key == cookie).first()
-        for key, value in request.form.to_dict():
-            setattr(user, key, value)
-        
-        db.session.commit()
+        try:
+            user = User.query.filter(User.unique_key == cookie).first()
+            # Получение данных из формы
+            first_name = request.form.get('first_name')
+            last_name = request.form.get('last_name')
+            patronymic = request.form.get('patronymic')
+            birth_date = request.form.get('birth_date')
+            phone_number = request.form.get('phone_number')
+            city = request.form.get('city')
+            gender = request.form.get('gender')
+            marital_status = request.form.get('marital_status')
+            child = request.form.get('child')
+
+            # Обновление полей пользователя
+            user.first_name = first_name
+            user.last_name = last_name
+            user.patronymic = patronymic
+            user.birth_date = birth_date
+            user.phone_number = phone_number
+            user.city = city
+            user.gender = gender
+            user.marital_status = marital_status
+            user.child = child
+
+            db.session.commit()
+        except:
+            return redirect(url_for('login', error_message='not_loginning'))
 
     # Проверка наличия куки с именем пользователя
     if cookie:
         # Поиск пользователя по имени пользователя
         user = User.query.filter_by(unique_key=cookie).first()
         if user:
-            return render_template('profile.html', user=user.username)
+            return render_template('profile.html', user=user)
     # Если куки с именем пользователя отсутствуют или пользователь не найден, перенаправляем на страницу входа
     return redirect(url_for('login', error_message='not_loginning'))
+
+@app.route('/all_tour')
+def all_tour():
+    return render_template('all_tour.html')
+
+@app.route('/info')
+def info():
+    return render_template('info.html')
+
+@app.route('/tour_info')
+def tour_info():
+    return render_template('tour_info.html')
 
 if __name__ == '__main__':
     app.run(debug=True)

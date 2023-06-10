@@ -158,8 +158,6 @@ main {
   transform: rotate(1deg);
 }
 
-.cards .card .title {}
-
 .cards .card .title h4 {
   font-family: 'Montserrat';
   font-style: normal;
@@ -184,10 +182,6 @@ main {
   color: rgba(29, 29, 29, 0.5);
 }
 
-.cards .card .attractions {}
-
-.cards .card .attractions ul {}
-
 .cards .card .attractions ul li {
   height: 60px;
 
@@ -196,8 +190,6 @@ main {
   align-items: center;
   margin-top: 32px;
 }
-
-.cards .card .attractions ul li .attractions__info {}
 
 .cards .card .attractions ul li .attractions__info h5 {
   max-width: 215px;
@@ -253,5 +245,24 @@ main {
   border-radius: 12px;
   color: #1D1D1D;
 
+  cursor: pointer;
+}
+
+.field--btn a {
+  text-decoration: none;
+  position: absolute;
+  top: 4%;
+  right: 17%;
+  padding: 10px 52px;
+  font-family: 'Montserrat', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 29px;
+  border: none;
+  outline: none;
+  color: #000000;
+  background: #FFCF08;
+  border-radius: 30px;
   cursor: pointer;
 }
