@@ -10,18 +10,9 @@
 </head>
 
 <body>
-  <header>
-    <div class="l-header">
-      <div class="right--ponel">
-        <a href="#">
-          <img src="{{ url_for('static', filename='assets/sign.svg') }}" alt="sign">
-        </a>
-      </div>
-    </div>
-  </header>
   <main>
     <div class="l-main">
-      <a href="#">
+      <a href="/">
         <div class="arrow"></div>
       </a>
 
@@ -31,8 +22,10 @@
           <img src="{{ url_for('static', filename='assets/profile.png') }}" alt="profile">
         </div>
         <div class="info">
-          <h5 class="name">Вася Пупкин</h5>
-          <p class="city">г. Санкт-Петербург</p>
+          {% if user.first_name and user.last_name and user.city %}
+            <h5 class="name">{{ user.first_name }} {{ user.last_name }}</h5>
+            <p class="city">г. {{ user.city }}</p>
+          {% endif %}
         </div>
       </div>
       <section class="field">
@@ -42,13 +35,23 @@
               <fieldset>
                 <legend>Имя*</legend>
                 <input id="name" type="text" name="first_name" required>
+                {% if user.first_name %}
+                  <script>
+                    document.getElementById('name').value = '{{ user.first_name }}';
+                  </script>
+                {% endif %}
               </fieldset>
             </label>
 
             <label for="surname">
               <fieldset>
                 <legend>Фамилия*</legend>
-                <input id="surname" type="text" name="last_name" required>
+                  <input id="surname" type="text" name="last_name" required>
+                  {% if user.last_name %}
+                    <script>
+                      document.getElementById('surname').value = '{{ user.last_name }}';
+                    </script>
+                  {% endif %}
               </fieldset>
             </label>
 
@@ -56,6 +59,11 @@
               <fieldset>
                 <legend>Отчество*</legend>
                 <input id="surname2" type="text" name="patronymic" required>
+                {% if user.patronymic %}
+                  <script>
+                    document.getElementById('surname2').value = '{{ user.patronymic }}';
+                  </script>
+                {% endif %}
               </fieldset>
             </label>
           </div>
@@ -64,6 +72,11 @@
               <fieldset>
                 <legend>Дата рождения*</legend>
                 <input type="text" id="birthday" placeholder="ДД.ММ.ГГГГ" name="birth_date" required>
+                {% if user.birth_date %}
+                  <script>
+                    document.getElementById('birthday').value = '{{ user.birth_date }}';
+                  </script>
+                {% endif %}
               </fieldset>
             </label>
 
@@ -71,13 +84,23 @@
               <fieldset>
                 <legend>Номер телефона*</legend>
                 <input id="number-phone" type="tel" name="phone_number" required>
+                {% if user.phone_number %}
+                  <script>
+                    document.getElementById('number-phone').value = '{{ user.phone_number }}';
+                  </script>
+                {% endif %}
               </fieldset>
             </label>
 
             <label class="city">
               <fieldset>
                 <legend>Город*</legend>
-                <input id="number-phone" type="text" name="city">
+                <input id="city" type="text" name="city">
+                {% if user.city %}
+                  <script>
+                    document.getElementById('city').value = '{{ user.city }}';
+                  </script>
+                {% endif %}
               </fieldset>
             </label>
           </div>
@@ -87,8 +110,16 @@
                 <legend>Пол*</legend>
                 <select onfocus='this.size=2;' onblur='this.size=0;' onchange='this.size=1;this.blur();' id="floor" name="gender">
                   <option hidden>Выберите</option>
+                  {% if user.gender == 'men' %}
+                    <option value="men" selected>Мужчина</option>
+                    <option value="women">Женщина</option>
+                  {% elif user.gender == 'women' %}
+                    <option value="men">Мужчина</option>
+                    <option value="women" selected>Женщина</option>
+                  {% else %}
                   <option value="men">Мужчина</option>
                   <option value="women">Женщина</option>
+                  {% endif %}
                 </select>
               </fieldset>
             </label>
@@ -97,9 +128,18 @@
               <fieldset>
                 <legend>Семейное положение*</legend>
                 <select onfocus='this.size=2;' onblur='this.size=0;' onchange='this.size=1;this.blur();' id="family" name="marital_status">
-                  <option hidden>Выберите</option>
-                  <option value="single">Холост</option>
-                  <option value="married">Женат/Замужем</option>
+                  <option hidden>Выберите</option>      
+                  {% if user.marital_status == 'single' %}
+                    <option value="single" selected>Холост</option>
+                    <option value="married">Женат/Замужем</option>
+                  {% elif user.marital_status == 'married' %}
+                    <option value="single">Холост</option>
+                    <option value="married" selected>Женат/Замужем</option>
+                  {% else %}
+                    <option value="single">Холост</option>
+                    <option value="married">Женат/Замужем</option>
+                  {% endif %}
+                </select>
                 </select>
               </fieldset>
             </label>
@@ -109,11 +149,43 @@
                 <legend>Дети*</legend>
                 <select onfocus='this.size=5;' onblur='this.size=0;' onchange='this.size=1;this.blur();' id="child" name="child">
                   <option hidden>Выберите</option>
+                  {% if user.child == 'no_child' %}
+                    <option value="no_child" selected>Нет</option>
+                    <option value="one">1 ребенок</option>
+                    <option value="two">2 ребенка</option>
+                    <option value="three">3 ребенка</option>
+                    <option value="more">больше 4-х детей</option>
+                  {% elif user.child == 'one' %}
                   <option value="no_child">Нет</option>
-                  <option value="one">1 ребенок</option>
+                  <option value="one" selected>1 ребенок</option>
                   <option value="two">2 ребенка</option>
                   <option value="three">3 ребенка</option>
                   <option value="more">больше 4-х детей</option>
+                  {% elif user.child == 'two' %}
+                    <option value="no_child">Нет</option>
+                    <option value="one">1 ребенок</option>
+                    <option value="two" selected>2 ребенка</option>
+                    <option value="three">3 ребенка</option>
+                    <option value="more">больше 4-х детей</option>
+                  {% elif user.child == 'three' %}
+                    <option value="no_child">Нет</option>
+                    <option value="one">1 ребенок</option>
+                    <option value="two">2 ребенка</option>
+                    <option value="three" selected>3 ребенка</option>
+                    <option value="more">больше 4-х детей</option>
+                  {% elif user.child == 'more' %}
+                    <option value="no_child">Нет</option>
+                    <option value="one">1 ребенок</option>
+                    <option value="two">2 ребенка</option>
+                    <option value="three">3 ребенка</option>
+                    <option value="more" selected>больше 4-х детей</option>
+                  {% else %}
+                    <option value="no_child">Нет</option>
+                    <option value="one">1 ребенок</option>
+                    <option value="two">2 ребенка</option>
+                    <option value="three">3 ребенка</option>
+                    <option value="more">больше 4-х детей</option>
+                  {% endif %}
                 </select>
               </fieldset>
             </label>

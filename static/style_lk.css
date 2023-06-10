@@ -240,7 +240,9 @@ section.field form .input--field label fieldset select option:hover {
 }
 
 .field--btn button {
-  margin: 10px;
+  position: absolute;
+  margin-top: 10px;
+  right: 20%;
   padding: 10px 52px;
   font-family: 'Montserrat', sans-serif;
   font-style: normal;
@@ -278,6 +280,10 @@ section.field form .input--field label fieldset select option:hover {
 
   .l-main .fullname-info .profile img {
     width: 65px;
+  }
+
+  .info {
+    margin-left: 200px;
   }
 
   .l-main .fullname-info .info {
@@ -358,22 +364,6 @@ section.field form .input--field label input:focus ~ legend {
   transition: transform 0.3s ease;
 }
 
-/* Custom select dropdown */
-label[for="floor"]::after,
-label[for="family"]::after,
-label[for="child"]::after {
-  content: '';
-  position: absolute;
-  top: calc(50% - 3px);
-  right: 0.8rem;
-  width: 0;
-  height: 0;
-  border-style: solid;
-  border-width: 6px 6px 0 6px;
-  border-color: #000000 transparent transparent transparent;
-  transition: transform 0.3s ease;
-}
-
 /* Стили для выпадающего списка */
 select {
   position: relative;
@@ -405,3 +395,6 @@ select:hover option {
   background-color: #ebebeb;
 }
 
+.exit {
+  padding: 10px;
+}
