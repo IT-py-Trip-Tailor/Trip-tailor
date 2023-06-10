@@ -152,22 +152,60 @@ def info():
 def tour_info():
     return render_template('tour_info.html')
 
+tour_data = pd.read_csv("tour_data.csv")
+
+# Подготовка данных для обучения
+le = LabelEncoder()
+
+tour_data_encoded = tour_data.copy()
+tour_data_encoded['Откуда'] = le.fit_transform(tour_data['Откуда'])
+tour_data_encoded['Куда'] = le.fit_transform(tour_data['Куда'])
+tour_data_encoded['Тип тура'] = le.fit_transform(tour_data['Тип тура'])
+tour_data_encoded['Цель тура'] = le.fit_transform(tour_data['Цель тура'])
+tour_data_encoded['Трансфер'] = le.fit_transform(tour_data['Трансфер'])
+tour_data_encoded['Тип размещения'] = le.fit_transform(tour_data['Тип размещения'])
+tour_data_encoded['Питание'] = le.fit_transform(tour_data['Питание'])
+tour_data_encoded['Активности'] = le.fit_transform(tour_data['Активности'])
+tour_data_encoded['Язык гида'] = le.fit_transform(tour_data['Язык гида'])
+
+scaler = MinMaxScaler()
+scaled_data = scaler.fit_transform(data)
+
+# KNN алгоритм
+knn = NearestNeighbors(n_neighbors=5, metric='euclidean')
+knn.fit(scaled_data)
+
+
 @app.route('/tour_package', methods=['GET', 'POST'])
 def tour_package():
     if request.method == 'POST':
-        from_ = request.form.get('from')
-        where = request.form.get('where')
-        date1 = request.form.get('date1')
-        date2 = request.form.get('date2')
-        cost1 = request.form.get('cost1')
-        cost2 = request.form.get('cost2')
-        route = request.form.get('route')
-        target = request.form.get('target')
-        type_tour = request.form.get('type_tour')
-        transfer1 = request.form.get('transfer1')
-        transfer2 = request.form.get('transfer2')
+        user_input = {
+            'Откуда': request.form.get('from'),
+            'Куда': request.form.get('where'),
+            'Бюджет': float(request.form.get('cost1')),
+            'Тип тура': request.form.get('type_tour'),
+            'Цель тура': request.form.get('target'),
+            'Трансфер': request.form.get('transfer1'),
+        }
 
-    return render_template('tour_package.html')
+        # Преобразование пользовательских данных
+        for col, value in user_input.items():
+            if col in le.classes_:
+                user_input[col] = le.transform([value])[0]
+
+        user_data = scaler.transform(pd.DataFrame([user_input]))
+
+        # Применение модели KNN
+        _, indices = knn.kneighbors(user_data)
+
+        # Вывод результатов
+        recommended_tours = data.iloc[indices[0]]
+        # Преобразование в удобочитаемый формат
+        recommended_tours = recommended_tours.to_dict(orient='records')
+
+        return render_template('tour_package.html', tours=recommended_tours)
+
+    return render_template('tour_package.html', tours=[])
 
 if __name__ == '__main__':
     app.run(debug=True)
