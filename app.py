@@ -159,17 +159,18 @@ def tour_info():
 data = pd.read_csv('tour_data.csv')
 
 # Предобработка данных
-le = LabelEncoder()
-data['Откуда'] = le.fit_transform(data['Откуда'])
-data['Куда'] = le.fit_transform(data['Куда'])
-data['Тип тура'] = le.fit_transform(data['Тип тура'])
-data['Цель тура'] = le.fit_transform(data['Цель тура'])
-data['Трансфер'] = le.fit_transform(data['Трансфер'])
-data['Тип размещения'] = le.fit_transform(data['Тип размещения'])
-data['Питание'] = le.fit_transform(data['Питание'])
-data['Активности'] = le.fit_transform(data['Активности'])
-data['Язык гида'] = le.fit_transform(data['Язык гида'])
-data['Маршрут'] = le.fit_transform(data['Маршрут']) # Обработка столбца 'Маршрут'
+label_encoders = {}  # Создаем словарь для хранения LabelEncoder для каждого столбца
+cols_to_encode = ['Откуда', 'Куда', 'Тип тура', 'Цель тура', 'Трансфер',
+                  'Тип размещения', 'Питание', 'Активности', 'Язык гида', 'Маршрут']
+
+for col in cols_to_encode:
+    le = LabelEncoder()
+    data[col] = le.fit_transform(data[col])
+    label_encoders[col] = le  # Сохраняем LabelEncoder для этого столбца
+
+columns_to_drop = ['Возраст', 'Звезды отеля', 'Маршрут', 'Размер группы']
+data = data.drop(columns=[col for col in columns_to_drop if col in data.columns])
+
 
 scaler = MinMaxScaler()
 scaled_data = scaler.fit_transform(data)
@@ -189,8 +190,8 @@ def tour_package():
 
         # Преобразование пользовательских данных
         for col, value in user_input.items():
-            if col in le.classes_:
-                user_input[col] = le.transform([value])[0]
+            if col in label_encoders:  # Используем LabelEncoder, соответствующий этому столбцу
+                user_input[col] = label_encoders[col].transform([value])[0]
 
         user_data = scaler.transform(pd.DataFrame([user_input]))
 
