@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Hobbies</title>
-  <link rel="stylesheet" href="static/style_info.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style_info.css') }}">
 </head>
 
 <body>
@@ -25,7 +25,7 @@
         <div class="card">
           <a href="#">
             <figure>
-              <img src="static/assets/art.png" class="art_img" alt="art">
+              <img src="{{ url_for('static', filename='assets/art.png') }}" class="art_img" alt="art">
               <figcaption>Искусство</figcaption>
             </figure>
           </a>
@@ -34,7 +34,7 @@
         <div class="card">
           <a href="#">
             <figure>
-              <img src="static/assets/sport.png" alt="art">
+              <img src="{{ url_for('static', filename='assets/sport.png') }}" alt="art">
               <figcaption>Спорт</figcaption>
             </figure>
           </a>
@@ -43,7 +43,7 @@
         <div class="card">
           <a href="#">
             <figure>
-              <img src="static/assets/IT.png" class="it_img" alt="art">
+              <img src="{{ url_for('static', filename='assets/IT.png') }}" class="it_img" alt="art">
               <figcaption>IT</figcaption>
             </figure>
           </a>
@@ -52,7 +52,7 @@
         <div class="card">
           <a href="#">
             <figure>
-              <img src="static/assets/music.png"  alt="art">
+              <img src="{{ url_for('static', filename='assets/music.png') }}"  alt="art">
               <figcaption>Музыка</figcaption>
             </figure>
           </a>
@@ -61,7 +61,7 @@
         <div class="card">
           <a href="#">
             <figure>
-              <img src="static/assets/movie.png" class="movie_img" alt="art">
+              <img src="{{ url_for('static', filename='assets/movie.png') }}" class="movie_img" alt="art">
               <figcaption>Кино</figcaption>
             </figure>
           </a>
@@ -70,7 +70,7 @@
         <div class="card">
           <a href="#">
             <figure>
-              <img src="static/assets/dance.png" alt="art">
+              <img src="{{ url_for('static', filename='assets/dance.png') }}" alt="art">
               <figcaption>Танцы</figcaption>
             </figure>
           </a>

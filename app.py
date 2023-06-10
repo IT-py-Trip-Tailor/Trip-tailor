@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, redirect, url_for, make_respo
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash, check_password_hash
 import secrets
+import sys
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.db'
@@ -20,6 +21,15 @@ class User(db.Model):
     email = db.Column(db.String(120), unique=True)
     password = db.Column(db.String(120))
     unique_key = db.Column(db.String(16))
+    first_name = db.Column(db.String(50), nullable=True)
+    last_name = db.Column(db.String(50), nullable=True)
+    patronymic = db.Column(db.String(50), nullable=True)
+    birth_date = db.Column(db.String(10), nullable=True)
+    phone_number = db.Column(db.String(20), nullable=True)
+    city = db.Column(db.String(50), nullable=True)
+    gender = db.Column(db.String(10), nullable=True)
+    marital_status = db.Column(db.String(20), nullable=True)
+    child = db.Column(db.String(50), nullable=True)
 
 # Создание таблицы, если она отсутствует
 with app.app_context():
@@ -45,13 +55,18 @@ def register():
         # Хэширование пароля
         hashed_password = generate_password_hash(password)
         # Создание нового пользователя
-        new_user = User(username=username, email=email, password=hashed_password, unique_key=unique_key)
-        db.session.add(new_user)
-        db.session.commit()
-        # Перенаправление на страницу входа
-        resp = make_response(redirect(url_for('index')))
-        resp.set_cookie('unique_key', unique_key)
-        return resp    
+        try:
+            User.query.filter((User.email == email)).first()
+            error_message = 'Такая почта уже используется, воспользуйтесь входом'
+            return render_template('login.html', error_message=error_message)
+        except:
+            new_user = User(username=username, email=email, password=hashed_password, unique_key=unique_key)
+            db.session.add(new_user)
+            db.session.commit()
+            # Перенаправление на страницу входа
+            resp = make_response(redirect(url_for('index')))
+            resp.set_cookie('unique_key', unique_key)
+            return resp    
 
     return render_template('reg.html')
 
@@ -80,11 +95,16 @@ def login():
 
 @app.route('/profile', methods=['GET', 'POST'])
 def profile():
+    cookie = request.cookies.get('unique_key')
+
     if request.method == 'POST':
-        pass
+        user = User.query.filter(User.unique_key == cookie).first()
+        for key, value in request.form.to_dict():
+            setattr(user, key, value)
+        
+        db.session.commit()
 
     # Проверка наличия куки с именем пользователя
-    cookie = request.cookies.get('unique_key')
     if cookie:
         # Поиск пользователя по имени пользователя
         user = User.query.filter_by(unique_key=cookie).first()

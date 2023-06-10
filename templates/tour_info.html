@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tour</title>
-  <link rel="stylesheet" href="static/style_tour_info.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style_tour_info.css') }}">
 </head>
 
 <body>
@@ -14,16 +14,16 @@
     <div class="l-header">
       <div class="logo">
         <a href="#">
-          <img src="static/assets/logo.svg" alt="logo">
+          <img src="{{ url_for('static', filename='assets/logo.svg') }}" alt="logo">
         </a>
       </div>
       <div class="right__ponel">
         <button class="sign-in">
-          <img src="static/assets/sign.svg" alt="sign">
+          <img src="{{ url_for('static', filename='assets/sign.svg') }}" alt="sign">
         </button>
         <div class="profile">
           <a href="#">
-            <img src="static/assets/profile.png" alt="profile">
+            <img src="{{ url_for('static', filename='assets/profile.png') }}" alt="profile">
           </a>
         </div>
       </div>
@@ -68,7 +68,7 @@
               <div class="prev"></div>
               <div class="next"></div>
             </div>
-            <img src="static/assets/mountain.png" alt="mountain">
+            <img src="{{ url_for('static', filename='assets/mountain.png') }}" alt="mountain">
             <div class="tour--description_bg-btn">
               <button>Выбрать</button>
             </div>
@@ -99,10 +99,10 @@
         </div>
         <div class="more--plug">
             <div id="slider" class="slider">
-                <img src="static/assets/mountain.png" class="slider-img" alt="Mountain 1">
-                <img src="static/assets/mountain1.png" class="slider-img" alt="Mountain 2">
-                <img src="static/assets/mountain.png" class="slider-img" alt="Mountain 3">
-                <img src="static/assets/mountain1.png" class="slider-img" alt="Mountain 4">
+                <img src="{{ url_for('static', filename='assets/mountain.png') }}" class="slider-img" alt="Mountain 1">
+                <img src="{{ url_for('static', filename='assets/mountain1.png') }}" class="slider-img" alt="Mountain 2">
+                <img src="{{ url_for('static', filename='assets/mountain.png') }}" class="slider-img" alt="Mountain 3">
+                <img src="{{ url_for('static', filename='assets/mountain1.png') }}" class="slider-img" alt="Mountain 4">
             </div>
         </div>
 
