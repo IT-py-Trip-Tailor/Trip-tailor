@@ -155,32 +155,23 @@ def info():
 def tour_info():
     return render_template('tour_info.html')
 
-tour_data = pd.read_csv("tour_data.csv")
+# Загрузка данных
+data = pd.read_csv('tour_data.csv')
 
-# Подготовка данных для обучения
+# Предобработка данных
 le = LabelEncoder()
-
-tour_data_encoded = tour_data.copy()
-tour_data_encoded['Откуда'] = le.fit_transform(tour_data['Откуда'])
-tour_data_encoded['Куда'] = le.fit_transform(tour_data['Куда'])
-tour_data_encoded['Тип тура'] = le.fit_transform(tour_data['Тип тура'])
-tour_data_encoded['Цель тура'] = le.fit_transform(tour_data['Цель тура'])
-tour_data_encoded['Трансфер'] = le.fit_transform(tour_data['Трансфер'])
-tour_data_encoded['Тип размещения'] = le.fit_transform(tour_data['Тип размещения'])
-tour_data_encoded['Питание'] = le.fit_transform(tour_data['Питание'])
-tour_data_encoded['Активности'] = le.fit_transform(tour_data['Активности'])
-tour_data_encoded['Язык гида'] = le.fit_transform(tour_data['Язык гида'])
-
-# Обучение модели KNN
-X = tour_data_encoded[['Откуда', 'Куда', 'Бюджет', 'Тип тура', 'Цель тура', 'Трансфер', 'Тип размещения', 'Питание', 'Активности', 'Язык гида']].values
-knn = NearestNeighbors(n_neighbors=5, algorithm='auto', metric='euclidean').fit(X)
+data['Откуда'] = le.fit_transform(data['Откуда'])
+data['Куда'] = le.fit_transform(data['Куда'])
+data['Тип тура'] = le.fit_transform(data['Тип тура'])
+data['Цель тура'] = le.fit_transform(data['Цель тура'])
+data['Трансфер'] = le.fit_transform(data['Трансфер'])
+data['Тип размещения'] = le.fit_transform(data['Тип размещения'])
+data['Питание'] = le.fit_transform(data['Питание'])
+data['Активности'] = le.fit_transform(data['Активности'])
+data['Язык гида'] = le.fit_transform(data['Язык гида'])
 
 scaler = MinMaxScaler()
-scaled_data = scaler.fit_transform(tour_data)
-
-# KNN алгоритм
-knn = NearestNeighbors(n_neighbors=5, metric='euclidean')
-knn.fit(scaled_data)
+scaled_data = scaler.fit_transform(data)
 
 
 @app.route('/tour_package', methods=['GET', 'POST'])
@@ -202,7 +193,9 @@ def tour_package():
 
         user_data = scaler.transform(pd.DataFrame([user_input]))
 
-        # Применение модели KNN
+        # KNN алгоритм
+        knn = NearestNeighbors(n_neighbors=5, metric='euclidean')
+        knn.fit(scaled_data)
         _, indices = knn.kneighbors(user_data)
 
         # Вывод результатов
