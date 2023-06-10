@@ -12,20 +12,20 @@
     <div class="l-header">
       <div class="logo">
         <a href="https://russpass.ru">
-          <img src="static/assets/logo.svg" alt="logo">
+          <img src="{{ url_for('static', filename='assets/logo.svg') }}" alt="logo">
         </a>
       </div>
       <div class="right__ponel">
         <a href="/login">
         <button class="sign-in">
           <span>Войти</span> 
-          <img src="static/assets/sign_icon.svg" alt="sign">
+          <img src="{{ url_for('static', filename='assets/sign_icon.svg') }}" alt="sign">
         </a>
           
         </button>
         <div class="profile">
           <a href="/profile">
-            <img src="static/assets/profile.png" alt="profile">
+            <img src="{{ url_for('static', filename='assets/profile.png') }}" alt="profile">
           </a>
         </div>
       </div>

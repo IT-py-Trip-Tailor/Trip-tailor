@@ -29,8 +29,6 @@ header .l-header {
   justify-content: flex-end;
 }
 
-header .l-header .right--ponel {}
-
 main {
   width: 100%;
 }
@@ -96,8 +94,6 @@ main {
   justify-content: space-between;
   align-items: center;
 }
-
-.l-main .fullname-info .profile {}
 
 .l-main .fullname-info .info {
   height: 92px;
@@ -244,6 +240,7 @@ section.field form .input--field label fieldset select option:hover {
 }
 
 .field--btn button {
+  margin: 10px;
   padding: 10px 52px;
   font-family: 'Montserrat', sans-serif;
   font-style: normal;
@@ -311,3 +308,100 @@ section.field form .input--field label fieldset select option:hover {
     width: 262px;
   }
 }
+
+/* Animations for input fields */
+input:not([placeholder]):hover {
+  transform: translateY(-5px);
+  transition: transform 0.3s ease;
+}
+
+input:not([placeholder]):focus {
+  transform: translateY(-5px);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Animation for input fields without placeholders */
+section.field form .input--field label input:not(:focus) {
+  transition: transform 0.3s ease;
+}
+
+section.field form .input--field label input:focus {
+  transform: translateY(-10px);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Button animation */
+.field--btn button {
+  transition: transform 0.3s ease;
+}
+
+.field--btn button:hover {
+  transform: translateY(-5px);
+}
+
+/* Animation for input fields with legends */
+section.field form .input--field label legend {
+  position: relative;
+  z-index: 2;
+  transition: transform 0.3s ease;
+}
+
+section.field form .input--field label input:not(:focus) ~ legend {
+  transform: translateY(0);
+  transition: transform 0.3s ease;
+}
+
+section.field form .input--field label input:focus ~ legend {
+  transform: translateY(-20px);
+  transition: transform 0.3s ease;
+}
+
+/* Custom select dropdown */
+label[for="floor"]::after,
+label[for="family"]::after,
+label[for="child"]::after {
+  content: '';
+  position: absolute;
+  top: calc(50% - 3px);
+  right: 0.8rem;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 6px 6px 0 6px;
+  border-color: #000000 transparent transparent transparent;
+  transition: transform 0.3s ease;
+}
+
+/* Стили для выпадающего списка */
+select {
+  position: relative;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #fff;
+  transition: all 0.3s ease;
+}
+
+select:focus {
+  outline: none;
+  border-color: #6c63ff;
+  box-shadow: 0 0 0 2px rgba(108, 99, 255, 0.2);
+}
+
+select option {
+  background-color: #fff;
+  color: #333;
+  transition: background-color 0.3s ease;
+}
+
+/* Анимация для показа опций */
+select:hover option {
+  background-color: #ebebeb;
+}
+
