@@ -41,6 +41,10 @@ def index():
     cookie = request.cookies.get('unique_key')
     if cookie:
         user = User.query.filter_by(unique_key=cookie).first()
+        try:
+            user.email
+        except:
+            return render_template('index.html')
         return render_template('profile.html', user=user)
     return render_template('index.html')
 
