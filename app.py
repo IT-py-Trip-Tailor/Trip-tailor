@@ -169,6 +169,7 @@ data['Тип размещения'] = le.fit_transform(data['Тип размещ
 data['Питание'] = le.fit_transform(data['Питание'])
 data['Активности'] = le.fit_transform(data['Активности'])
 data['Язык гида'] = le.fit_transform(data['Язык гида'])
+data['Маршрут'] = le.fit_transform(data['Маршрут']) # Обработка столбца 'Маршрут'
 
 scaler = MinMaxScaler()
 scaled_data = scaler.fit_transform(data)
