@@ -80,7 +80,7 @@
             <label for="target">
               <h3>Цель тура</h3>
                <select onfocus='this.size=3;' onblur='this.size=0;' onchange='this.size=1;this.blur();' id="target" name="target">
-                <option hidden>Выберите</option> 
+                <option hidden>Выберите</option>
                 <option value="one">С семьей</option>
                  <option value="several">В одиночку</option>
                  <option value="several">С друзьями</option>
@@ -103,7 +103,7 @@
              <label for="target">
               <h3>Трансфер</h3>
                <select onfocus='this.size=3;' onblur='this.size=0;' onchange='this.size=1;this.blur();' id="target" name="transfer1">
-                <option hidden>Выберите</option> 
+                <option hidden>Выберите</option>
                 <option value="one">Самолет</option>
                  <option value="several">Автобус</option>
                  <option value="several">Поезд</option>
@@ -112,7 +112,7 @@
              <label for="target">
               <h3>Трансфер</h3>
                <select onfocus='this.size=3;' onblur='this.size=0;' onchange='this.size=1;this.blur();' id="target" name="transfer2">
-                <option hidden>Выберите</option> 
+                <option hidden>Выберите</option>
                 <option value="one">Самолет</option>
                  <option value="several">Автобус</option>
                  <option value="several">Поезд</option>
@@ -120,9 +120,34 @@
              </label>
         </div>
         <div class="tour_package--btn">
-          <button type="submit">Найти</button>
+          <button type="submit" value="Find Tours">Найти</button>
         </div>
       </form>
+
+      <h2>Recommended Tours</h2>
+        {% if not tours.empty %}
+            <h2>Recommended Tours</h2>
+            <table>
+                <thead>
+                    <tr>
+                        {% for column in tours.columns %}
+                            <th>{{ column }}</th>
+                        {% endfor %}
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for row in tours %}
+                        <tr>
+                            {% for value in row %}
+                                <td>{{ value }}</td>
+                            {% endfor %}
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% endif %}
+
+
       </div>
     </div>
     </div>

@@ -11,7 +11,26 @@ app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.db'
 db = SQLAlchemy(app)
 
-    
+
+data = pd.read_csv('tour_data.csv')
+label_encoders = {}
+cols_to_encode = ['Откуда', 'Куда', 'Тип тура', 'Цель тура', 'Трансфер']
+
+for col in cols_to_encode:
+    le = LabelEncoder()
+    data[col] = le.fit_transform(data[col])
+    label_encoders[col] = le
+
+columns_to_drop = ['Возраст', 'Звезды отеля', 'Маршрут', 'Размер группы', 'Тип размещения', 'Питание', 'Активности', 'Язык гида']
+data = data.drop(columns=[col for col in columns_to_drop if col in data.columns])
+
+scaler = MinMaxScaler()
+scaled_data = scaler.fit_transform(data)
+
+# KNN алгоритм
+knn = NearestNeighbors(n_neighbors=5, metric='euclidean')
+knn.fit(scaled_data)
+
 def generate_unique_key():
     # Генерация случайной строки
     cookie_value = secrets.token_hex(16)
@@ -155,26 +174,6 @@ def info():
 def tour_info():
     return render_template('tour_info.html')
 
-# Загрузка данных
-data = pd.read_csv('tour_data.csv')
-
-# Предобработка данных
-label_encoders = {}  # Создаем словарь для хранения LabelEncoder для каждого столбца
-cols_to_encode = ['Откуда', 'Куда', 'Тип тура', 'Цель тура', 'Трансфер',
-                  'Тип размещения', 'Питание', 'Активности', 'Язык гида', 'Маршрут']
-
-for col in cols_to_encode:
-    le = LabelEncoder()
-    data[col] = le.fit_transform(data[col])
-    label_encoders[col] = le  # Сохраняем LabelEncoder для этого столбца
-
-columns_to_drop = ['Возраст', 'Звезды отеля', 'Маршрут', 'Размер группы']
-data = data.drop(columns=[col for col in columns_to_drop if col in data.columns])
-
-
-scaler = MinMaxScaler()
-scaled_data = scaler.fit_transform(data)
-
 
 @app.route('/tour_package', methods=['GET', 'POST'])
 def tour_package():
@@ -188,26 +187,26 @@ def tour_package():
             'Трансфер': request.form.get('transfer1'),
         }
 
-        # Преобразование пользовательских данных
+        # Обработка пользовательских данных
         for col, value in user_input.items():
-            if col in label_encoders:  # Используем LabelEncoder, соответствующий этому столбцу
-                user_input[col] = label_encoders[col].transform([value])[0]
+            if col in label_encoders:
+                if value in label_encoders[col].classes_:
+                    user_input[col] = label_encoders[col].transform([value])[0]
+                else:
+                    print(f"Упс! Нам неизвестно значение '{value}' для {col}.")
+                    user_input[col] = -1
 
         user_data = scaler.transform(pd.DataFrame([user_input]))
 
-        # KNN алгоритм
-        knn = NearestNeighbors(n_neighbors=5, metric='euclidean')
-        knn.fit(scaled_data)
+        # Получение рекомендаций
         _, indices = knn.kneighbors(user_data)
 
         # Вывод результатов
         recommended_tours = data.iloc[indices[0]]
-        # Преобразование в удобочитаемый формат
-        recommended_tours = recommended_tours.to_dict(orient='records')
+        recommended_tours_list = recommended_tours.values.tolist()
+        return render_template('tour_package.html', tours=recommended_tours_list)
 
-        return render_template('tour_package.html', tours=recommended_tours)
-
-    return render_template('tour_package.html', tours=[])
+    return render_template('tour_package.html', tours='')
 
 if __name__ == '__main__':
     app.run(debug=True)
